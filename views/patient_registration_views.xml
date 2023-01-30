@@ -3,7 +3,7 @@
         <record id="relationship_action12123" model="ir.actions.act_window">
             <field name="name">Patient</field>
             <field name="type">ir.actions.act_window</field>
-            <field name="res_model">res.patient</field>
+            <field name="res_model">patient</field>
             <field name="view_mode">tree,form</field>
             <field name="target">current</field>
             <field name="help" type="html">
@@ -18,23 +18,6 @@
         <menuitem id="menu_patient_registration_root"
             name="Patient registration"
             action="relationship_action12123">
-
-            <menuitem 
-                id="menu_item_doctors"
-                name="Doctors"
-                action="relationship_action12123"
-                sequence="1"
-            />
-
-            <menuitem id="menu_item_registration_data"
-                name="People data"
-                sequence="1"/>
-
-            <menuitem id="test123"
-                name="Diseases"
-                action="relationship_action12123"
-                sequence="1"/>
-
             
         </menuitem>
 

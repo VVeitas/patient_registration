@@ -1,2 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_patient_registration_res_patient,patient_registration.res_patient,model_res_patient,base.group_user,1,1,1,1
+access_patient_registration_disease,patient_registration.disease,model_disease,base.group_user,1,1,1,1
+access_patient_registration_doctor,patient_registration.doctor,model_doctor,base.group_user,1,1,1,1
+access_patient_registration_patient,patient_registration.patient,model_patient,base.group_user,1,1,1,1
+access_patient_registration_relationship,patient_registration.relationship,model_relationship,base.group_user,1,1,1,1

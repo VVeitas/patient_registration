@@ -1,11 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
+
+    <record id="action_disease_views" model="ir.actions.act_window">
+        <field name="name">Diseases</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">disease</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No data yet!
+            </p><p>
+                Create a new disease
+            </p>
+        </field>
+    </record>
+
+    <record id="tree_disease_views" model="ir.ui.view">
+        <field name="name">disease.tree</field>
+        <field name="model">disease</field>
+        <field name="arch" type="xml">
+            <tree string="Diseases">
+                <field name="code" />
+                <field name="name" />
+                <field name="description" />
+                <field name="symptoms" />
+                <field name="treatment_recommendations" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="form_disease_views" model="ir.ui.view">
+        <field name="name">disease.form</field>
+        <field name="model">disease</field>
+        <field name="arch" type="xml">
+            <form string="Disease">
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="code" />
+                            <field name="name" />
+                            <field name="description" />
+                        </group>
+                        <group>
+                            <field name="symptoms" />
+                            <field name="treatment_recommendations" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    
     <menuitem 
         id="menu_item_diseases"
         name="Diseases"
-        action="relationship_action12123"
-        parent="menu_item_registration_data"
+        action="action_disease_views"
+        parent="menu_patient_registration_root"
         sequence="1"
     />
 

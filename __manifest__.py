@@ -28,6 +28,7 @@
         'views/views.xml',
         'views/templates.xml',
         # 'views/relationship_views.xml',
+        'views/disease_views.xml',
         'views/patient_registration_views.xml',
         'views/doctor_views.xml',
     ],

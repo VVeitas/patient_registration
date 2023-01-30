@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
-from . import models
+from . import patient
+from . import doctor
+from . import visit
 from . import relationship
-from . import res_patient
+from . import disease
