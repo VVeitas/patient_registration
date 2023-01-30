@@ -27,9 +27,9 @@
         'security/ir.model.access.csv',
         'views/views.xml',
         'views/templates.xml',
-        # 'views/ir_module_module.xml',
         # 'views/relationship_views.xml',
         'views/patient_registration_views.xml',
+        'views/doctor_views.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

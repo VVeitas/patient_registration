@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem 
+        id="menu_item_diseases"
+        name="Diseases"
+        action="relationship_action12123"
+        parent="menu_item_registration_data"
+        sequence="1"
+    />
+
+</odoo>

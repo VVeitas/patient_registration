@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
     <record id="relationship_action" model="ir.actions.act_window">
@@ -15,12 +16,4 @@
         </field>
     </record>
 
-    <menuitem 
-        id="menu_item_relationships"
-        name="Relationships"
-        action="relationship_action12123"
-        parent="menu_item_registration_data"
-        sequence="1"
-    />
-    
 </odoo>
