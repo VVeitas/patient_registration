@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="relationship_action12123" model="ir.actions.act_window">
+            <field name="name">Patient</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">res.patient</field>
+            <field name="view_mode">tree,form</field>
+            <field name="target">current</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    No data yet!
+                </p><p>
+                    Create a new manufacturing order
+                </p>
+            </field>
+        </record>
+
+        <menuitem id="menu_patient_registration_root123"
+            name="Patient registrationqq"
+            action="relationship_action12123"/>
+
+    </data>
+
+    <!-- <menuitem action="relationship_action"
+            id="test123"
+            parent="menu_patient_registration"
+            sequence="1"/> -->
+
+    
+
+        <!-- <menuitem id="menu_patient_registration"
+            name="Test"
+            sequence="10"/> -->
+
+        <!-- <menuitem id="mrp_planning_menu_root"
+            name="Planning"
+            sequence="15"/>
+
+        <menuitem id="menu_mrp_bom"
+            name="Products"
+            sequence="20"/>
+
+        <menuitem id="menu_mrp_reporting"
+              name="Reporting"
+              sequence="25"/>
+
+        <menuitem id="menu_mrp_configuration"
+            name="Configuration"
+            groups="group_mrp_manager"
+            sequence="100"/>  -->
+
+    <!-- </menuitem> -->
+</odoo>

@@ -1,0 +1,18 @@
+<odoo>
+
+    <record id="relationship_action" model="ir.actions.act_window">
+        <field name="name">Relationship test</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">relationship</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No data yet!
+            </p><p>
+                Create a new manufacturing order
+            </p>
+        </field>
+    </record>
+    
+</odoo>

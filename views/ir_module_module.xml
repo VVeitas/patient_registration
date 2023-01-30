@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record model="ir.module.category" id="test">
+            <field name="name">test</field>
+            <field name="description">Heltestals.</field>
+            <field name="sequence">15</field>
+        </record>
+
+        <record model="ir.module.module" id="module_patient_registration1">
+            <field name="name">patient_registration1</field>
+            <field name="shortdesc">Patient registration</field>
+            <field name="sequence">180</field>
+            <field name="category_id" ref="test"/>
+            <field name="application" eval="True"/>
+            <field name="summary">Patient registration and doctor visit application</field>
+            <!-- <field name="license">OEEL-1</field> -->
+            <!-- <field name="author">Odoo S.A.</field> -->
+            <!-- <field name="to_buy" eval="True"/> -->
+            <field name="icon">/base/static/img/icons/hr_appraisal.png</field>
+            <!-- <field name="website">https://www.odoo.com/app/appraisals?utm_source=db&amp;utm_medium=module</field> -->
+        </record>
+    </data>
+</odoo>
