@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="action_patient_views" model="ir.actions.act_window">
+        <field name="name">Patients</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">patient</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No data yet!
+            </p><p>
+                Create a new patient
+            </p>
+        </field>
+    </record>
+
+    <record id="tree_patient_views" model="ir.ui.view">
+        <field name="name">patient.tree</field>
+        <field name="model">patient</field>
+        <field name="arch" type="xml">
+            <tree string="Patients">
+                <field name="partner_id" />
+                <field name="birthday" />
+                <field name="age" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="form_patient_views" model="ir.ui.view">
+        <field name="name">patient.form</field>
+        <field name="model">patient</field>
+        <field name="arch" type="xml">
+            <form string="Patient">
+                <header>
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="partner_id" />
+                            <field name="birthday" />
+                            <field name="age" />
+                            <field name="birthday" />
+                        </group>
+                        <group>
+                            <field name="relatives">
+                                <tree>
+                                    <field name="partner_id" />
+                                    <field name="relationship_type" />
+                                </tree>
+                            </field>
+                            <field name="visits" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    
+    <menuitem 
+        id="menu_item_patients"
+        name="Patients"
+        action="action_patient_views"
+        parent="menu_patient_registration_root"
+        sequence="1"
+    />
+
+</odoo>

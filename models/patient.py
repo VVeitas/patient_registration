@@ -7,9 +7,12 @@ class Patient(models.Model):
     partner_id = fields.Many2one('res.partner')
     birthday = fields.Date()
     age = fields.Integer(store=True, compute='_compute_age')
-    registrations = fields.One2many('visit', 'patient')
+    relatives = fields.One2many('relatives', 'patient')
+    visits = fields.One2many('visit', 'patient')
 
     @api.depends('birthday')
     def _compute_age(self):
         for record in self:
-            record.age = datetime.datetime.now() - record.birthday
+            record.age = False
+            if record.birthday:
+                record.age = datetime.datetime.now() - record.birthday
