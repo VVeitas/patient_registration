@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+
+    <record id="action_visit_views" model="ir.actions.act_window">
+        <field name="name">Visits</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">visit</field>
+        <field name="view_mode">tree,form</field>
+        <field name="target">current</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                No data yet!
+            </p><p>
+                Create a new visit
+            </p>
+        </field>
+    </record>
+
+    <record id="tree_visit_views" model="ir.ui.view">
+        <field name="name">visit.tree</field>
+        <field name="model">visit</field>
+        <field name="arch" type="xml">
+            <tree string="Visits">
+                <field name="patient" />
+                <field name="doctor" />
+                <field name="start_time" />
+                <field name="end_time" />
+                <field name="visit_duration" />
+                <field name="diagnosed_disease" />
+                <field name="visit_state" widget="badge" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="form_visit_views" model="ir.ui.view">
+        <field name="name">visit.form</field>
+        <field name="model">visit</field>
+        <field name="arch" type="xml">
+            <form string="Visit">
+                <header>
+                    <field name="visit_state" widget="statusbar" />
+                </header>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="patient" />
+                            <field name="doctor" />
+                            <field name="diagnosed_disease" />
+                        </group>
+                        <group>
+                            <field name="start_time" />
+                            <field name="end_time" />
+                            <field name="visit_duration" />
+                        </group>
+                    </group>
+                    <group>
+                        <group>
+                            <field name="supplies_and_quantities" />
+                            <field name="total_amount" widget="monetary" />
+                        </group>
+
+                        <group>
+                            <field name="patient_symptoms" />
+                            <field name="treatment_recommendations" />
+                        </group>
+                    </group>
+                </sheet>
+
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    
+    <menuitem 
+        id="menu_item_visits"
+        name="Visits"
+        action="action_visit_views"
+        parent="menu_patient_registration_root"
+        sequence="1"
+    />
+
+</odoo>

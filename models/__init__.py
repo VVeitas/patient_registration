@@ -7,3 +7,4 @@ from . import doctor
 from . import visit
 from . import disease
 from . import relatives
+from . import supplies
