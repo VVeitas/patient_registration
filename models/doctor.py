@@ -4,14 +4,20 @@ class Doctor(models.Model):
     _name = "doctor"
 
     partner_id = fields.Many2one('res.partner')
-    photo = fields.binary()
+    photo = fields.Binary(related='partner_id.image_1920')
     education = fields.Char()
     specialization = fields.Text()
     weekday_doctor_working = fields.Selection(
         [('monday', _('Monday')), ('tuesday', _('Tuesday')), ('wednesday', _('Wednesday')), ('thursday', 'Thursday'), ('friday', 'Friday')], 
         default='monday',
     )
+    visit_count = fields.Integer(compute='_compute_visit_count')
 
+    def _compute_visit_count(self):
+        for record in self:
+            record.visit_count = 0
+            record.visit_count = record.env['visit'].search_count([('doctor', '=', record.id)])
+    
     def action_view_visit_count(self):
         return {
             'name': _('Doctor visit count'),

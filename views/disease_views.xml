@@ -62,7 +62,7 @@
         name="Diseases"
         action="action_disease_views"
         parent="menu_patient_registration_root"
-        sequence="1"
+        sequence="3"
     />
 
 </odoo>

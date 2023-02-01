@@ -54,7 +54,7 @@
                                     <field name="relationship_type" />
                                 </tree>
                             </field>
-                            <field name="visits" />
+                            <field name="visits" readonly="1" />
                         </group>
                     </group>
                 </sheet>
