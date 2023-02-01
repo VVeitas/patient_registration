@@ -1,19 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <record id="relationship_action" model="ir.actions.act_window">
-        <field name="name">Relationship test</field>
+
+    <record id="action_doctor_views" model="ir.actions.act_window">
+        <field name="name">Doctors</field>
         <field name="type">ir.actions.act_window</field>
-        <field name="res_model">relationship</field>
+        <field name="res_model">doctor</field>
         <field name="view_mode">tree,form</field>
         <field name="target">current</field>
         <field name="help" type="html">
             <p class="o_view_nocontent_smiling_face">
                 No data yet!
             </p><p>
-                Create a new manufacturing order
+                Create a new doctor
             </p>
         </field>
     </record>
+
+    <record id="tree_doctor_views" model="ir.ui.view">
+        <field name="name">doctor.tree</field>
+        <field name="model">doctor</field>
+        <field name="arch" type="xml">
+            <tree string="Doctors">
+                <field name="photo" />
+                <field name="partner_id" />
+                <field name="weekday_doctor_working" />
+                <field name="education" optional="hide" />
+                <field name="specialization" optional="hide" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="form_doctor_views" model="ir.ui.view">
+        <field name="name">doctor.form</field>
+        <field name="model">doctor</field>
+        <field name="arch" type="xml">
+            <form string="Doctor">
+                <header>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                    <button class="oe_stat_button" type="object" name="action_view_visit_count" icon="user-doctor">
+                        <field string="Visits count" name="visit_count" widget="statinfo" />
+                    </button>
+
+                    <group>
+                        <group>
+                            <field name="photo" />
+                            <field name="partner_id" />
+                            <field name="weekday_doctor_working" />
+                        </group>
+                        <group>
+                            <field name="education" />
+                            <field name="specialization" />
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    
+    <menuitem 
+        id="menu_item_doctors"
+        name="Doctors"
+        action="action_doctor_views"
+        parent="menu_doctor_registration_root"
+        sequence="2"
+    />
 
 </odoo>
