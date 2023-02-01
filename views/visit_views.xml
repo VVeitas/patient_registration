@@ -26,7 +26,7 @@
                 <field name="doctor" />
                 <field name="start_time" />
                 <field name="end_time" />
-                <field name="visit_duration" />
+                <field name="visit_duration" widget="time" />
                 <field name="diagnosed_disease" />
                 <field name="visit_state" widget="badge" />
             </tree>

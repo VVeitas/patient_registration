@@ -3,15 +3,25 @@ from odoo import models, fields, api, _
 class Doctor(models.Model):
     _name = "doctor"
 
-    partner_id = fields.Many2one('res.partner')
-    photo = fields.Binary(related='partner_id.image_1920')
+    partner_id = fields.Many2one('res.partner', required=True)
+    # photo = fields.Image(related='partner_id.image_1920', store=True)
+    photo = fields.Image(compute='_compute_photo', store=True)
+
     education = fields.Char()
     specialization = fields.Text()
     weekday_doctor_working = fields.Selection(
         [('monday', _('Monday')), ('tuesday', _('Tuesday')), ('wednesday', _('Wednesday')), ('thursday', 'Thursday'), ('friday', 'Friday')], 
-        default='monday',
+        default='monday', required=True
     )
     visit_count = fields.Integer(compute='_compute_visit_count')
+
+    @api.depends('partner_id.image_1920')
+    def _compute_photo(self):
+        for record in self:
+            record.photo = False
+            if record.partner_id.image_1920:
+                record.photo = record.partner_id.image_1920
+
 
     def _compute_visit_count(self):
         for record in self:

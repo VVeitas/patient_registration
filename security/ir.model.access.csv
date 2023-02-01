@@ -5,3 +5,4 @@ access_patient_registration_patient,patient_registration.patient,model_patient,b
 access_patient_registration_relationship,patient_registration.relationship,model_relationship,base.group_user,1,1,1,1
 access_patient_registration_visit,patient_registration.visit,model_visit,base.group_user,1,1,1,1
 access_patient_registration_relatives,patient_registration.relatives,model_relatives,base.group_user,1,1,1,1
+access_patient_registration_supplies,patient_registration.supplies,model_supplies,base.group_user,1,1,1,1

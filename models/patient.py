@@ -1,5 +1,6 @@
 from odoo import models, fields, api
-import datetime
+from dateutil.relativedelta import relativedelta
+from datetime import date, datetime
 
 class Patient(models.Model):
     _name = "patient"
@@ -15,4 +16,5 @@ class Patient(models.Model):
         for record in self:
             record.age = False
             if record.birthday:
-                record.age = datetime.datetime.now() - record.birthday
+                difference_in_years = relativedelta(date.today(), record.birthday).years
+                record.age = difference_in_years
