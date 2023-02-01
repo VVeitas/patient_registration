@@ -16,7 +16,7 @@ class Visit(models.Model):
     diagnosed_disease = fields.Many2many('disease')
     supplies_and_quantities = fields.One2many('supplies', 'visit')
     currency_id = fields.Many2one('res.currency', 'Currency', required=True, default=lambda self: self.env.company.currency_id.id)
-    total_amount = fields.Monetary(string='Total price amount of used supplies', compute='_compute_total_amount', store=True)
+    total_amount = fields.Monetary(string='Total price amount of used supplies', compute='_compute_total_amount', store=True, tracking=True)
     patient_symptoms = fields.Html()
     treatment_recommendations = fields.Html()
     visit_state = fields.Selection([('registration', 'Registration'), ('visit', 'Visit'), ('treatment', 'Treatment'), ('done', 'Done')], 

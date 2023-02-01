@@ -16,6 +16,11 @@
             </p>
         </field>
     </record>
+    
+    <menuitem id="menu_patient_registration_root"
+        name="Patient registration"
+        action="action_visit_views">
+    </menuitem>
 
     <record id="tree_visit_views" model="ir.ui.view">
         <field name="name">visit.tree</field>
@@ -46,7 +51,9 @@
                         <group>
                             <field name="patient" />
                             <field name="doctor" />
-                            <field name="diagnosed_disease" />
+                            <field name="diagnosed_disease" widget="many2many_tags"/>
+                            <field name="patient_symptoms" />
+                            <field name="treatment_recommendations" />
                         </group>
                         <group>
                             <field name="start_time" />
@@ -54,17 +61,25 @@
                             <field name="visit_duration" />
                         </group>
                     </group>
-                    <group>
-                        <group>
-                            <field name="supplies_and_quantities" />
-                            <field name="total_amount" widget="monetary" />
-                        </group>
 
-                        <group>
-                            <field name="patient_symptoms" />
-                            <field name="treatment_recommendations" />
-                        </group>
-                    </group>
+                    <notebook>
+                        <page string="Supplies" name="supplies_and_quantities" >
+                            <group>
+                                <group>
+                                    <field name="supplies_and_quantities">
+                                        <tree editable="top">
+                                            <field name="product_tmpl_id" />
+                                            <field name="quantity" />
+                                        </tree>
+                                    </field>
+                                    <field name="currency_id" invisible="1" />
+                                    <field name="total_amount" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                                </group>
+                            </group>
+                            
+                            <br/>
+                        </page>
+                    </notebook>
                 </sheet>
 
                 <div class="oe_chatter">

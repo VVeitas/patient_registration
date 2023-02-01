@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
 
-    <menuitem id="menu_patient_registration_root"
-        name="Patient registration"
-        action="action_patient_views">
-    </menuitem>
 
     <record id="action_patient_views" model="ir.actions.act_window">
         <field name="name">Patients</field>
