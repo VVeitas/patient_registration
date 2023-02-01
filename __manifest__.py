@@ -19,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'mail', 'contacts'],
+    'depends': ['base', 'web', 'mail', 'contacts'],
 
     # always loaded
     'data': [
@@ -30,5 +30,8 @@
         'views/relationship_views.xml',
         'views/doctor_views.xml',
         'views/visit_views.xml',
+
+        'report/visit_report_templates.xml',
+        'report/visit_report.xml',
     ],
 }

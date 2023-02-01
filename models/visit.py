@@ -20,7 +20,7 @@ class Visit(models.Model):
     patient_symptoms = fields.Html()
     treatment_recommendations = fields.Html()
     visit_state = fields.Selection([('registration', 'Registration'), ('visit', 'Visit'), ('treatment', 'Treatment'), ('done', 'Done')], 
-        default='registration',
+        default='registration', tracking=True
     )
 
     @api.depends('supplies_and_quantities')
