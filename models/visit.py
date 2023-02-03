@@ -5,8 +5,8 @@ class Visit(models.Model):
     _name = "visit"
     _inherit = ['mail.thread', 'mail.activity.mixin']
 
-    patient = fields.Many2one('patient', string='Patient')
-    doctor = fields.Many2one('doctor', string='Doctor')
+    patient = fields.Many2one('patient', string='Patient', required=True)
+    doctor = fields.Many2one('doctor', string='Doctor', required=True)
     start_time = fields.Datetime(string='Start time')
     end_time = fields.Datetime(string='End time')
     visit_duration = fields.Float(

@@ -44,7 +44,7 @@
         <field name="arch" type="xml">
             <form string="Visit">
                 <header>
-                    <field name="visit_state" widget="statusbar" />
+                    <field name="visit_state" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"/>
                 </header>
                 <sheet>
                     <group>

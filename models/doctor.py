@@ -4,7 +4,7 @@ class Doctor(models.Model):
     _name = "doctor"
 
     partner_id = fields.Many2one('res.partner', required=True)
-    # photo = fields.Image(related='partner_id.image_1920', store=True)
+    name = fields.Char(related='partner_id.name')
     photo = fields.Image(compute='_compute_photo', store=True)
 
     education = fields.Char()
@@ -32,7 +32,6 @@ class Doctor(models.Model):
         return {
             'name': _('Doctor visit count'),
             'type': 'ir.actions.act_window',
-            'view_type': 'tree',
             'view_mode': 'tree',
             'res_model': 'visit',
             'domain': [('doctor', '=', self.id)],

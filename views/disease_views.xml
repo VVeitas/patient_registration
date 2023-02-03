@@ -48,7 +48,6 @@
                         <group>
                             <field name="symptoms" />
                             <field name="treatment_recommendations" />
-                            <field name="description" />
                         </group>
                     </group>
                 </sheet>

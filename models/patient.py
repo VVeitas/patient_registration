@@ -5,7 +5,8 @@ from datetime import date, datetime
 class Patient(models.Model):
     _name = "patient"
 
-    partner_id = fields.Many2one('res.partner')
+    partner_id = fields.Many2one('res.partner', required=True)
+    name = fields.Char(related='partner_id.name')
     birthday = fields.Date()
     age = fields.Integer(store=True, compute='_compute_age')
     relatives = fields.One2many('relatives', 'patient')

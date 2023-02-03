@@ -25,11 +25,11 @@
     'data': [
         'security/ir.model.access.csv',
 
+        'views/visit_views.xml',
         'views/disease_views.xml',
         'views/patient_views.xml',
         'views/relationship_views.xml',
         'views/doctor_views.xml',
-        'views/visit_views.xml',
 
         'report/visit_report_templates.xml',
         'report/visit_report.xml',

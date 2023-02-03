@@ -5,6 +5,6 @@ class Supplies(models.Model):
     _name = "supplies"
     
     visit = fields.Many2one('visit')
-    product_tmpl_id = fields.Many2one('product.template')
-    quantity = fields.Integer(digits='Product Unit of Measure')
+    product_tmpl_id = fields.Many2one('product.template', required=True)
+    quantity = fields.Integer(digits='Product Unit of Measure', required=True)
     

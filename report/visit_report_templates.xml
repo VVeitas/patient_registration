@@ -52,7 +52,7 @@
 
                 
                 <strong>Treatment recommendations:</strong>
-                <p t-field="doc.treatment_recommendations" />
+                <p t-field="doc.treatment_recommendations" class="m-0" />
 
 
             </div>
