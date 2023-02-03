@@ -7,29 +7,53 @@
                 <div class="oe_structure"/>
 
                 <h2 class="mt16">
-                    <span>Visit</span>
+                    <span>Visit # <span t-field="doc.id" /></span>
                 </h2>
+                <strong>Duration:</strong>
+                <p t-field="doc.visit_duration" class="m-0" t-options="{'widget': 'float_time'}" />
+                <p><span t-field="doc.start_time" class="m-0" /> - <span t-field="doc.end_time" class="m-0" /></p>
+
+
 
                 <div class="row mt32 mb32" id="informations">
-                
-                    <div class="col-auto col-3 mw-100 mb-2">
-                        <strong>Visit:</strong>
-                        <br/>
-                        <p># <span t-field="doc.id" class="m-0" /></p>
-                        <br/>
-                        <span t-field="doc.start_time" class="m-0" /> - <span t-field="doc.end_time" class="m-0" />
-                        <br/>
-                        <span t-field="doc.visit_duration" class="m-0" />
-                    </div>
-
                     <div class="col-auto col-3 mw-100 mb-2">
                         <strong>Patient:</strong>
+                        <br/>
+                        # <span t-field="doc.patient.partner_id.id" class="m-0" />
                         <span t-field="doc.patient.partner_id"
                             t-options='{"widget": "contact", "fields": ["name", "address"], "no_marker": True}' />
-                        <span t-field="doc.patient.partner_id.id" class="m-0" />
                     </div>
 
+                    <div class="col-auto col-3 mw-100 mb-2">
+                        <strong>Doctor:</strong><br/>
+                        # <span t-field="doc.doctor.id" />
+                        <br/>
+                        <span t-field="doc.doctor.partner_id.name" class="m-0" />
+                    </div>
                 </div> 
+
+                <br/>
+                <table class="table table-sm o_main_table">
+
+                    <thead style="display: table-row-group">
+                        <tr>
+                            <th name="th_disease" class="text-left">Disease</th>
+                        </tr>
+                    </thead>
+
+                    <tbody class="diseases_tbody">
+                        <t t-foreach="doc.diagnosed_disease" t-as="disease">
+                            <tr>
+                                <td name="td_disease" class="text-left"><span t-field="disease.name" /></td>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+
+                
+                <strong>Treatment recommendations:</strong>
+                <p t-field="doc.treatment_recommendations" />
+
 
             </div>
         </t>
