@@ -10,7 +10,7 @@ class Doctor(models.Model):
     specialization = fields.Text()
     weekday_doctor_working = fields.Selection(
         [('monday', _('Monday')), ('tuesday', _('Tuesday')), ('wednesday', _('Wednesday')), ('thursday', 'Thursday'), ('friday', 'Friday')], 
-        default='monday'
+        default='monday', required=True,
     )
     visit_count = fields.Integer(compute='_compute_visit_count')
 

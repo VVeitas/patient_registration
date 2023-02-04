@@ -10,7 +10,7 @@ class Visit(models.Model):
     doctor = fields.Many2one('doctor', string='Doctor', required=True)
     start_time = fields.Datetime(string='Start time')
     end_time = fields.Datetime(string='End time')
-    visit_duration = fields.Float(
+    visit_duration = fields.Char(
         string='Visit duration', 
         compute='_compute_visit_duration',
     )
@@ -35,10 +35,9 @@ class Visit(models.Model):
     @api.depends('start_time', 'end_time')
     def _compute_visit_duration(self):
         for record in self:
-            import logging
             record.visit_duration = False
             if record.start_time and record.end_time:
-                record.visit_duration = (record.end_time - record.start_time).total_seconds() / 60 / 60 # divide by seconds, then by minutes to get hour value
+                record.visit_duration = str(record.end_time - record.start_time)
 
     def write(self, vals):
         res = super().write(vals)

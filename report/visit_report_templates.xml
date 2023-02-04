@@ -10,7 +10,7 @@
                     <span>Visit # <span t-field="doc.id" /></span>
                 </h2>
                 <strong>Duration:</strong>
-                <p t-field="doc.visit_duration" class="m-0" t-options="{'widget': 'float_time'}" />
+                <p t-field="doc.visit_duration" class="m-0" />
                 <p><span t-field="doc.start_time" class="m-0" /> - <span t-field="doc.end_time" class="m-0" /></p>
 
 
