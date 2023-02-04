@@ -9,9 +9,21 @@
                 <h2 class="mt16">
                     <span>Visit # <span t-field="doc.id" /></span>
                 </h2>
-                <strong>Duration:</strong>
-                <p t-field="doc.visit_duration" class="m-0" />
-                <p><span t-field="doc.start_time" class="m-0" /> - <span t-field="doc.end_time" class="m-0" /></p>
+
+                <div class="row mt32 mb32" id="informations">
+                    <div t-if="doc.start_time" class="col-auto col-2 mw-100 mb-2">
+                        <strong>Start time:</strong>
+                        <p><span t-esc="doc.start_time.strftime('%H:%M %Y-%m-%d')" class="m-0" /></p>
+                    </div>
+                    <div t-if="doc.end_time" class="col-auto col-2 mw-100 mb-2">
+                        <strong>End time:</strong>
+                        <p><span t-esc="doc.end_time.strftime('%H:%M %Y-%m-%d')" class="m-0" /></p>
+                    </div>
+                    <div t-if="doc.visit_duration" class="col-auto col-2 mw-100 mb-2">
+                        <strong>Duration:</strong>
+                        <p t-field="doc.visit_duration" class="m-0" />
+                    </div>
+                </div>
 
 
 
