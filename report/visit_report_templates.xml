@@ -37,7 +37,8 @@
 
                     <thead style="display: table-row-group">
                         <tr>
-                            <th name="th_disease" class="text-left">Disease</th>
+                            <th name="th_disease" class="text-left">Diseases</th>
+                            <th name="th_treatment" class="text-right">Treatment recommendations</th>
                         </tr>
                     </thead>
 
@@ -45,14 +46,11 @@
                         <t t-foreach="doc.diagnosed_disease" t-as="disease">
                             <tr>
                                 <td name="td_disease" class="text-left"><span t-field="disease.name" /></td>
+                                <td name="td_treatment" class="text-right"><span t-field="disease.treatment_recommendations" /></td>
                             </tr>
                         </t>
                     </tbody>
                 </table>
-
-                
-                <strong>Treatment recommendations:</strong>
-                <p t-field="doc.treatment_recommendations" class="m-0" />
 
 
             </div>

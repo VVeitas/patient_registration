@@ -33,7 +33,9 @@
                 <field name="start_time" />
                 <field name="end_time" />
                 <field name="visit_duration" widget="time" />
-                <field name="visit_state" widget="badge" />
+                <field name="visit_state" decoration-info="visit_state == 'visit'"  decoration-warning="visit_state == 'registration'" decoration-danger="visit_state == 'treatment'" decoration-success="visit_state == 'done'" widget="badge" />
+                <field name="currency_id" invisible="1" />
+                <field name="total_amount_spent" widget="monetary" options="{'currency_field': 'currency_id'}" sum="Total amount spent"/>
             </tree>
         </field>
     </record>
@@ -73,7 +75,7 @@
                                         </tree>
                                     </field>
                                     <field name="currency_id" invisible="1" />
-                                    <field name="total_amount" widget="monetary" options="{'currency_field': 'currency_id'}" />
+                                    <field name="total_amount_spent" widget="monetary" options="{'currency_field': 'currency_id'}" />
                                 </group>
                             </group>
                             

@@ -5,23 +5,15 @@ class Doctor(models.Model):
 
     partner_id = fields.Many2one('res.partner', required=True)
     name = fields.Char(related='partner_id.name')
-    photo = fields.Image(compute='_compute_photo', store=True)
+    photo = fields.Image()
 
     education = fields.Char()
     specialization = fields.Text()
     weekday_doctor_working = fields.Selection(
         [('monday', _('Monday')), ('tuesday', _('Tuesday')), ('wednesday', _('Wednesday')), ('thursday', 'Thursday'), ('friday', 'Friday')], 
-        default='monday', required=True
+        default='monday'
     )
     visit_count = fields.Integer(compute='_compute_visit_count')
-
-    @api.depends('partner_id.image_1920')
-    def _compute_photo(self):
-        for record in self:
-            record.photo = False
-            if record.partner_id.image_1920:
-                record.photo = record.partner_id.image_1920
-
 
     def _compute_visit_count(self):
         for record in self:
@@ -32,7 +24,7 @@ class Doctor(models.Model):
         return {
             'name': _('Doctor visit count'),
             'type': 'ir.actions.act_window',
-            'view_mode': 'tree',
+            'view_mode': 'tree,form',
             'res_model': 'visit',
             'domain': [('doctor', '=', self.id)],
         }

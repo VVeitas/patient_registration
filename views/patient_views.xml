@@ -23,8 +23,8 @@
         <field name="arch" type="xml">
             <tree string="Patients">
                 <field name="partner_id" />
-                <field name="birthday" />
                 <field name="age" />
+                <field name="birthday" />
             </tree>
         </field>
     </record>
@@ -37,6 +37,15 @@
                 <header>
                 </header>
                 <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" type="object" name="action_view_visit_count" icon="fa-user-md">
+                            <field string="Visits count" name="visit_count" widget="statinfo" />
+
+                            <button class="oe_stat_button" type="object" name="action_view_patient_amount_total" icon="fa-usd">
+                                <field string="Total amount" name="patient_total_amount" widget="statinfo" />
+                            </button>
+                        </button>
+                    </div>
                     <group>
                         <group>
                             <field name="partner_id" />
@@ -46,15 +55,13 @@
                         <group>
                         </group>
                     </group>
-                    <group>
-                        <field name="relatives" widget="one2many" >
-                            <tree editable="top">
-                                <field name="partner_id" />
-                                <field name="relationship_type" />
-                            </tree>
-                        </field>
-                        <field name="visits" readonly="1" />
-                    </group>
+                    <field name="relatives" widget="one2many" >
+                        <tree editable="top">
+                            <field name="partner_id" />
+                            <field name="relationship_type" />
+                        </tree>
+                    </field>
+                    <field name="visits" readonly="1" />
                 </sheet>
             </form>
         </field>

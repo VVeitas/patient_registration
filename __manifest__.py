@@ -19,7 +19,7 @@
     'version': '0.1',
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'web', 'mail', 'contacts'],
+    'depends': ['base', 'web', 'mail', 'contacts', 'product', 'partner_autocomplete'],
 
     # always loaded
     'data': [

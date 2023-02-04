@@ -1,9 +1,10 @@
-from odoo import models, fields, api
+from odoo import models, fields, api, _
 import datetime
 
 class Visit(models.Model):
     _name = "visit"
     _inherit = ['mail.thread', 'mail.activity.mixin']
+    _order = "id desc"
 
     patient = fields.Many2one('patient', string='Patient', required=True)
     doctor = fields.Many2one('doctor', string='Doctor', required=True)
@@ -16,7 +17,7 @@ class Visit(models.Model):
     diagnosed_disease = fields.Many2many('disease')
     supplies_and_quantities = fields.One2many('supplies', 'visit')
     currency_id = fields.Many2one('res.currency', 'Currency', required=True, default=lambda self: self.env.company.currency_id.id)
-    total_amount = fields.Monetary(string='Total price amount of used supplies', compute='_compute_total_amount', store=True, tracking=True)
+    total_amount_spent = fields.Monetary(string='Total price amount of used supplies', compute='_compute_total_amount_spent', store=True, tracking=True)
     patient_symptoms = fields.Html()
     treatment_recommendations = fields.Html()
     visit_state = fields.Selection([('registration', 'Registration'), ('visit', 'Visit'), ('treatment', 'Treatment'), ('done', 'Done')], 
@@ -24,11 +25,12 @@ class Visit(models.Model):
     )
 
     @api.depends('supplies_and_quantities')
-    def _compute_total_amount(self):
+    def _compute_total_amount_spent(self):
+        """Compute total monetary amount of supplies and quantities."""
         for record in self:
-            record.total_amount = 0
+            record.total_amount_spent = 0
             if record.supplies_and_quantities:
-                record.total_amount = sum([line.quantity * line.product_tmpl_id.list_price for line in record.supplies_and_quantities])
+                record.total_amount_spent = sum([line.quantity * line.product_tmpl_id.list_price for line in record.supplies_and_quantities])
 
     @api.depends('start_time', 'end_time')
     def _compute_visit_duration(self):
@@ -37,3 +39,17 @@ class Visit(models.Model):
             record.visit_duration = False
             if record.start_time and record.end_time:
                 record.visit_duration = (record.end_time - record.start_time).total_seconds() / 60 / 60 # divide by seconds, then by minutes to get hour value
+
+    def write(self, vals):
+        res = super().write(vals)
+        self.add_followers() # add patient or doctor to record followers
+        return res
+
+    def add_followers(self):
+        """If patient or doctor is not in followers, subscribe them."""
+        for record in self:
+            if record.patient and record.patient.partner_id.id not in record.message_partner_ids.ids:
+                record.message_subscribe([record.patient.partner_id.id])
+            if record.doctor and record.doctor.partner_id.id not in record.message_partner_ids.ids:
+                record.message_subscribe([record.doctor.partner_id.id])
+
