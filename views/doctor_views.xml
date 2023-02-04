@@ -24,8 +24,8 @@
             <tree string="Doctors">
                 <field name="partner_id" />
                 <field name="weekday_doctor_working" />
-                <field name="education" optional="hide" />
-                <field name="specialization" optional="hide" />
+                <field name="education" />
+                <field name="specialization" />
             </tree>
         </field>
     </record>

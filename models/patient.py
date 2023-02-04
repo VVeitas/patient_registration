@@ -42,7 +42,6 @@ class Patient(models.Model):
             'view_mode': 'tree,form',
             'res_model': 'visit',
             'domain': [('patient', '=', self.id)],
-            'context': {'search_default_patient': 1},
         }
 
     def action_view_visit_count(self):
@@ -51,5 +50,5 @@ class Patient(models.Model):
             'type': 'ir.actions.act_window',
             'view_mode': 'tree,form',
             'res_model': 'visit',
-            'domain': [('doctor', '=', self.id)],
+            'domain': [('patient', '=', self.id)],
         }

@@ -23,8 +23,8 @@
         <field name="arch" type="xml">
             <tree string="Patients">
                 <field name="partner_id" />
-                <field name="age" />
                 <field name="birthday" />
+                <field name="age" />
             </tree>
         </field>
     </record>
@@ -40,10 +40,10 @@
                     <div class="oe_button_box" name="button_box">
                         <button class="oe_stat_button" type="object" name="action_view_visit_count" icon="fa-user-md">
                             <field string="Visits count" name="visit_count" widget="statinfo" />
-
-                            <button class="oe_stat_button" type="object" name="action_view_patient_amount_total" icon="fa-usd">
-                                <field string="Total amount" name="patient_total_amount" widget="statinfo" />
-                            </button>
+                        </button>
+                        
+                        <button class="oe_stat_button" type="object" name="action_view_patient_amount_total" icon="fa-usd">
+                            <field string="Total amount" name="patient_total_amount" widget="statinfo" />
                         </button>
                     </div>
                     <group>
@@ -53,15 +53,22 @@
                             <field name="age" />
                         </group>
                         <group>
+                            <field name="relatives" >
+                                <tree editable="top">
+                                    <field name="partner_id" />
+                                    <field name="relationship_type" />
+                                </tree>
+                            </field>
                         </group>
                     </group>
-                    <field name="relatives" widget="one2many" >
-                        <tree editable="top">
-                            <field name="partner_id" />
-                            <field name="relationship_type" />
-                        </tree>
-                    </field>
-                    <field name="visits" readonly="1" />
+
+                    <notebook>
+
+                        <page string="Visits" name="visits" >
+                            <field name="visits" readonly="1" />
+                        </page>
+
+                    </notebook>
                 </sheet>
             </form>
         </field>

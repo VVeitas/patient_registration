@@ -3,13 +3,14 @@
     'name': "patient_registration",
 
     'summary': """
-        Patient registration system.""",
-
-    'description': """
-        Patient registration system with registrations of patients, doctors, visits, supplements etc...
+        Patient registration system.
     """,
 
-    'author': "Valentas",
+    'description': """
+        Patient registration system with registrations of patients, doctors, visits, supplements.
+    """,
+
+    'author': "Valentas Veitas",
     'website': "",
 
     # Categories can be used to filter modules in modules listing

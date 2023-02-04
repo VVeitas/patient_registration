@@ -30,12 +30,12 @@
                 <field name="id" />
                 <field name="patient" />
                 <field name="doctor" />
+                <field name="visit_duration" widget="time" />
                 <field name="start_time" />
                 <field name="end_time" />
-                <field name="visit_duration" widget="time" />
-                <field name="visit_state" decoration-info="visit_state == 'visit'"  decoration-warning="visit_state == 'registration'" decoration-danger="visit_state == 'treatment'" decoration-success="visit_state == 'done'" widget="badge" />
                 <field name="currency_id" invisible="1" />
                 <field name="total_amount_spent" widget="monetary" options="{'currency_field': 'currency_id'}" sum="Total amount spent"/>
+                <field name="visit_state" decoration-info="visit_state == 'visit'"  decoration-warning="visit_state == 'registration'" decoration-danger="visit_state == 'treatment'" decoration-success="visit_state == 'done'" widget="badge" />
             </tree>
         </field>
     </record>
@@ -49,6 +49,12 @@
                     <field name="visit_state" widget="statusbar" options="{'clickable': '1', 'fold_field': 'fold'}"/>
                 </header>
                 <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            # <field name="id" readonly="1"/>
+                        </h1>
+                    </div>
+
                     <group>
                         <group>
                             <field name="patient" />

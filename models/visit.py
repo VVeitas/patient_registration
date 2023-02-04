@@ -45,6 +45,12 @@ class Visit(models.Model):
         self.add_followers() # add patient or doctor to record followers
         return res
 
+    @api.model_create_multi
+    def create(self, vals):
+        res = super().create(vals)
+        res.add_followers() # add patient or doctor to record followers
+        return res
+
     def add_followers(self):
         """If patient or doctor is not in followers, subscribe them."""
         for record in self:
