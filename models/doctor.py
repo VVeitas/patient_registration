@@ -6,7 +6,6 @@ class Doctor(models.Model):
     partner_id = fields.Many2one('res.partner', required=True)
     name = fields.Char(related='partner_id.name')
     photo = fields.Image()
-
     education = fields.Char()
     specialization = fields.Text()
     weekday_doctor_working = fields.Selection(
